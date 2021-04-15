@@ -4,6 +4,5 @@ BEGIN;
 
 CREATE VIEW count_users_and_products AS 
     
-    
 
 COMMIT;

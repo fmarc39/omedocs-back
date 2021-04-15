@@ -1,4 +1,5 @@
 %syntax-version=1.0.0
 %project=omedocs
 
-tables-01 2021-04-14T12:46:58Z "Etudiant O'clock",,, <etudiant@teleporteur> # Ajout des tables
+01-tables 2021-04-14T12:46:58Z "Etudiant O'clock",,, <etudiant@teleporteur> # Ajout des tables
+05-view-count 2021-04-15T08:34:16Z "Etudiant O'clock",,, <etudiant@teleporteur> # Ajout d'une vue pour visualiser le nombre d'acheteurs, vendeurs et produits

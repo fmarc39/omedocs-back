@@ -1,4 +1,4 @@
--- Verify omedocs:05-view-count on pg
+-- Verify omedocs:05-function-createUser on pg
 
 BEGIN;
 

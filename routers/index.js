@@ -1,6 +1,6 @@
 const express = require('express');
 
-const connectRouter = require('./initRouter');
+const connectRouter = require('./connectRouter');
 
 const router = express.Router();
 

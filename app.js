@@ -6,9 +6,10 @@ const router = require('./routers');
 
 const app = express();
 
-// A éditer
+// CORS 
 app.use(cors({
-    origin: "*"
+    // Permet à l'addresse donnée de pouvoir accéder à l'API
+    origin: 'http://localhost:8080',
 }));
 
 app.use(express.json());
@@ -17,5 +18,5 @@ app.use(express.urlencoded({ extended: true }));
 app.use(router);
 
 app.listen(process.env.PORT || 3000, () => {
-    console.log('Server running on :', process.env.PORT);
+    console.log('CORS-enabled server running on :', process.env.PORT);
 });

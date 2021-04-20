@@ -1,22 +1,15 @@
 const jsonwebtoken = require('jsonwebtoken');
-const argon2 = require('argon2');
 const connectDataMapper = require('../dataMappers/connectDataMapper');
 const { insertUser } = require('../dataMappers/connectDataMapper');
-const jwt = require('express-jwt');
-
-
-
-// const authorizationMiddleware = jwt({ secret: process.env.ACCESS_TOKEN_SECRET, algorithms: ['HS256'] });
-
-// app.get('/recipes', authorizationMiddleware,(req, res) => { /* Du code ici */ };
-
-
-
+const bcrypt = require('bcrypt');
 
 module.exports = {    
 
     // Récupérer et renvoyer sous format JSON les informations du nouvel utilisateur qui s'est inscrit
-    async register(request, response) {
+    async signup (request, response) {
+        // Hasher le mot de passe
+        const hashedPassword = await bcrypt.hash(request.body.password, 10);
+
         // Récupérer les infos du nouvel utilisateur
         const newUser = await insertUser (
             request.body.userType,
@@ -25,8 +18,8 @@ module.exports = {
             request.body.finess,
             request.body.adeli,
             request.body.email, 
-            request.body.password,
-            request.body.phoneNumer,
+            hashedPassword,
+            request.body.phoneNumber,
             request.body.address,
             request.body.city, 
             request.body.region,
@@ -49,7 +42,6 @@ module.exports = {
 
     // Se connecter
     async login (request, response) {
-        // Authentifier l'utilisateur (à faire)
         // Voir dans ma base de données si j'ai un utilisateur avec cet email
         const user = await connectDataMapper.findUserByEmail(request.body.email);
 
@@ -64,28 +56,37 @@ module.exports = {
             return;
         };
 
+        console.log(request.body.password);
+        console.log(user[0]);
+        console.log(user[0].password);
+
         // Je vérifie que le mot de passe haché qui est enregistré dans ma base de données correspond au mot de passe donnée par 
         // l'utilisateur
-        if (await argon2.verify(user.password_hash, request.body.password)) {
+        if (await bcrypt.compare(request.body.password, user[0].password)) {
+            console.log('good');
+
             // On extrait les données de l'utilisateur qui sont stockés en base de données
             const userData = {
-                userType: user.userType,
-                establishment: user.establishment, 
-                rpps: user.rpps, 
-                finess: user.finess,
-                adeli: user.adeli, 
-                email: user.email, 
-                password: user.password,
-                phoneNumber: user.phoneNumber,
-                address: user.address,
-                city: user.city,
-                region: user.region,
-                zipCode: user.zipCode
+                user
+                // userType: user[0].userType,
+                // establishment: user[0].establishment, 
+                //rpps: user[0].rpps, 
+                //finess: user[0].finess,
+                //adeli: user[0].adeli, 
+                //email: user[0].email, 
+                //password: user[0].password,
+                //phoneNumber: user[0].phoneNumber,
+                //address: user[0].address,
+                //city: user[0].city,
+                //region: user[0].region,
+                //zipCode: user[0].zipCode
             };
+
+            console.log(userData);
 
             // Générer un token
             const token = jsonwebtoken.sign(userData, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '30m',  algorithm: 'HS256' });
-        
+
             // Renvoyer notre token avec les infos de l'utilisateur au front
             response.status(200).json({ 
                 status: "success",
@@ -100,36 +101,6 @@ module.exports = {
                     detail: "bad-credentials"
                 }
             });
-        }
-    },
-
-    // Fonction pour valider le token
-    async validateAuthJWT(request, response, next) {
-        // On récupère le token dans le header d'autorization
-        const token = request.headers.authorization;
-
-        // Si on ne récupère pas le token, on renvoit une erreur du client (400)
-        if (! token) {
-            response.status(400).json({
-                error: {
-                    name: "missing-auth-token",
-                }
-            });
-            return;
-        }
-
-        try {
-            // Vérifier que le token reçu est bien valide
-            const userData = await jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-            response.locals.user = await userDataMapper.findUserByEmail(userData.mail);
-            next();
-        } catch (error) {
-            response.status(401).json({
-                error: {
-                    name: "authentification_error",
-                    detail: "bad-credentials"
-                }
-            });
-        }
+        };
     },
 }; 

@@ -25,7 +25,7 @@ VALUES
 ('vaccins');
 
 
-INSERT INTO "user" (userType, establishment, rpps, finess, adeli, email, password, phoneNumber, address, city, region, zipCode)
+INSERT INTO "user" (user_type, establishment, rpps, finess, adeli, email, password, phone_number, address, city, region, zip_code)
 VALUES 
 ('seller', 'Pharmacie de St. Louis', 12345678901, null, null, 'pharmaducoin@gmail.com', 'password123', 0633432313, '2 Rue des clochers', 
     'St. Louis', 'Aquitaine', 33240),
@@ -44,7 +44,7 @@ VALUES
     'Cela', 'Ile-de-France', 91240);
 
 
-INSERT INTO product (productName, expirationDate, quantity, amountInBox, mass, volume, unitPrice, composition, dosageForm, cisCode, userId, pathologyId)
+INSERT INTO product (product_name, expiration_date, quantity, amount_in_box, mass, volume, unit_price, composition, dosage_form, cis_code, user_id, pathology_id)
 VALUES 
 ('doliprane', '13/06/2021', 3, 8, '100 mg', null, 2.18, 'acide citrique anhydre, mannitol, saccharine sodique', 'comprimé', 64793681, 1, 2),
 ('efferalgan', '18/07/2021', 5, 16, '500 mg', null, 3.29, 'hydroxypropylcellulose, croscarmellose sodique, béhénate de glycérol', 'granulés en sachet', 61128406, 1, 2),
@@ -59,21 +59,21 @@ VALUES
 ('spafson', '29/05/2021', 1, 30, '160 mg', null, 3.16, 'actose monohydraté, saccharose, acétate de polyvinyle', 'comprimé', 34009318, 4, 7);
 
 
-INSERT INTO "order" (orderNumber, status, userId)
+INSERT INTO "order" (order_number, status, user_id)
 VALUES 
 (65789546, 'Expédié', 5),
 (65789547, 'En cours de livraison', 6),
 (65789548, 'livré demain', 7);
 
 
-INSERT INTO notification (message, orderId, userId)
+INSERT INTO notification (message, order_id, user_id)
 VALUES 
 ('Bonjour, voici la commande de votre acheteur: ', 1, 1),
 ('Bonjour, voici la commande de votre acheteur: ', 2, 2),
 ('Bonjour, voici la commande de votre acheteur: ', 3, 3);
 
 
-INSERT INTO productHasOrder
+INSERT INTO product_has_order
 VALUES 
 ( 1, 1),
 ( 2, 1),

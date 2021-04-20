@@ -12,18 +12,18 @@ module.exports = {
 
         // Récupérer les infos du nouvel utilisateur
         const newUser = await insertUser (
-            request.body.userType,
+            request.body.user_type,
             request.body.establishment,
             request.body.rpps,
             request.body.finess,
             request.body.adeli,
             request.body.email, 
             hashedPassword,
-            request.body.phoneNumber,
+            request.body.phone_number,
             request.body.address,
             request.body.city, 
             request.body.region,
-            request.body.zipCode
+            request.body.zip_code
         );
 
         if (!newUser) {

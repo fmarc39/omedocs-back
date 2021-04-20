@@ -2,6 +2,6 @@
 
 BEGIN;
 
-DROP TABLE pathology, "user", product, "order", notification, productHasOrder;
+DROP TABLE pathology, "user", product, "order", notification, product_has_order;
 
 COMMIT;

@@ -15,11 +15,12 @@ const app = express();
 // du domaine utilisé par cette API
 app.use(cors({
     // Permet à l'URL donné de pouvoir accéder à l'API
-    origin: 'http://localhost:8080',
+    origin: '*',
 }));
 
-// On utilise un middleware intégré qui reconnaît les requêtes sous forme JSON
+// On utilise un middleware intégré qui analyse les requêtes entrantes sous format JSON
 app.use(express.json());
+// On utilise un middleware intégré qui analyse les requêtes entrantes sous forme de tableau ou de chaîne de caractères
 app.use(express.urlencoded({ extended: true }));
 
 // on demande à express d'utiliser le routeur que l'on a configuré dans le fichier router.js

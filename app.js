@@ -5,7 +5,7 @@ const express = require('express');
 // On récupère le package cors qui nous donne un middleware permettant d'activer le CORS avec plusieurs options à utiliser si besoin
 const cors = require('cors');
 
-// On importe le router
+// On importe le dossier routers
 const router = require('./routers');
 
 
@@ -26,8 +26,8 @@ app.use(express.urlencoded({ extended: true }));
 // on demande à express d'utiliser le routeur que l'on a configuré dans le fichier router.js
 app.use(router);
 
-// Je demande dans mon application à récupérer une variable d'environnement pour déterminer quel port utiliser pour express
-// si on ne me donne aucune variable PORT dans l'environnement alors je prend la valeur 3000 
+// Je demande dans mon application à récupérer une variable d'environnement pour déterminer quel port utiliser pour Express.
+// Si on ne me donne aucune variable PORT dans l'environnement alors je prend le port 3000 
 app.listen(process.env.PORT || 3000, () => {
     console.log('CORS-enabled server running on :', process.env.PORT);
 });

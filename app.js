@@ -5,10 +5,10 @@ const express = require('express');
 // On récupère le package cors qui nous donne un middleware permettant d'activer le CORS avec plusieurs options à utiliser si besoin
 const cors = require('cors');
 
-// On importe le dossier routers
+// On importe le dossier 'routers'
 const router = require('./routers');
 
-
+// On déclenche Express
 const app = express();
 
 // On utilise le package cors qui active le CORS pour permettre à un domaine extérieur (côté front) d'accéder aux ressources 

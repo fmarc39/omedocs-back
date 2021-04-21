@@ -1,8 +1,10 @@
 -- Deploy omedocs:tables-01 to pg
 
+-- Création des tables SQL
 BEGIN;
 
 CREATE TABLE pathology (
+    -- On auto-incrémente l'id
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name TEXT NOT NULL
 );
@@ -35,6 +37,7 @@ CREATE TABLE product (
     composition TEXT NOT NULL,
     dosage_form TEXT NOT NULL,
     cis_code TEXT NOT NULL,
+    -- clés étrangères
     user_id INT REFERENCES "user"(id),
     pathology_id INT REFERENCES pathology(id)
 );
@@ -50,6 +53,7 @@ CREATE TABLE "order" (
 CREATE TABLE notification (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     message TEXT NOT NULL, 
+    -- date incluant le fuseau horaire
     date TIMESTAMPTZ,
     order_id INT REFERENCES "order"(id),
     user_id INT REFERENCES "user"(id)

@@ -1,3 +1,4 @@
+// Récupère le pool de clients PostgreSQL
 const client = require('./client'); 
 
 // On export les fonctions
@@ -14,7 +15,7 @@ module.exports = {
         return result.rows;
     },
 
-    // Sélectionne les données de l'utilisateur avec l'email entré pour la connexion 
+    // Sélectionne les données de l'utilisateur qui contient l'email entré pour la connexion 
     async findUserByEmail(email) {
         const result = await client.query(`
             SELECT *

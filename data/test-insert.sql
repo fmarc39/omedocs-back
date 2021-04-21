@@ -1,3 +1,5 @@
+-- Insère des données dans les tables créées
+
 BEGIN;
 
 INSERT INTO pathology (name)

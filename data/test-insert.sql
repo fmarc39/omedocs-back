@@ -21,7 +21,7 @@ VALUES
     'Cela', 'Ile-de-France', '91240');
 
 
-INSERT INTO product (product_name, expiration_date, number_of_boxes, quantity_in_box, mass, volume, unit_price, composition, dosage_form, 
+INSERT INTO product (name, expiration_date, number_of_boxes, quantity_in_box, mass, volume, unit_price, composition, dosage_form, 
                     cis_code, user_id)
 VALUES 
 ('doliprane', '13/06/2021', '3', '8', '100 mg', null, '2.18', 'acide citrique anhydre, mannitol, saccharine sodique', 'comprimé', 

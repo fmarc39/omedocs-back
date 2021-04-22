@@ -23,7 +23,7 @@ app.use(express.json());
 // On utilise un middleware intégré qui analyse les requêtes entrantes sous forme de tableau ou de chaîne de caractères
 app.use(express.urlencoded({ extended: true }));
 
-// on demande à express d'utiliser le routeur que l'on a configuré dans le fichier router.js
+// On demande à Express d'utiliser le routeur que l'on a configuré dans le dossier 'routers'
 app.use(router);
 
 // Je demande dans mon application à récupérer une variable d'environnement pour déterminer quel port utiliser pour le serveur HTTP.

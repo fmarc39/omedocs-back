@@ -8,7 +8,7 @@ const bcrypt = require('bcrypt');
 
 // On export nos fonctions
 module.exports = {    
-
+    
     // Récupère et renvoie sous format JSON les informations du nouvel utilisateur qui s'est inscrit
     async signup (request, response) {
         // Hash le mot de passe
@@ -90,4 +90,5 @@ module.exports = {
             });
         };
     },
+    
 }; 

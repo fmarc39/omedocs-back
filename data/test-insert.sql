@@ -2,31 +2,6 @@
 
 BEGIN;
 
-INSERT INTO pathology (name)
-VALUES 
-('anti-inflammatoire'),
-('antalgique'),
-('antibiotique'),
-('antimycosique'),
-('antiviral'),
-('cardiologie'),
-('antispasmodique'),
-('dermatologie'),
-('diététique'),
-('endocrinologie'),
-('hépatologie'),
-('gynécologie'),
-('hématologie'),
-('cancérologie'),
-('alergologie'),
-('neurologie'),
-('ophtalmologie'),
-('pneumologie'),
-('psychiatrie'),
-('urologie'),
-('vaccins');
-
-
 INSERT INTO "user" (user_type, establishment, rpps, finess, adeli, email, password, phone_number, address, city, region, zip_code)
 VALUES 
 ('seller', 'Pharmacie de St. Louis', '12345678901', null, null, 'pharmaducoin@gmail.com', 'password123', '0633432313', '2 Rue des clochers', 
@@ -46,28 +21,28 @@ VALUES
     'Cela', 'Ile-de-France', '91240');
 
 
-INSERT INTO product (product_name, expiration_date, quantity, amount_in_box, mass, volume, unit_price, composition, dosage_form, 
-                    cis_code, user_id, pathology_id)
+INSERT INTO product (product_name, expiration_date, number_of_boxes, quantity_in_box, mass, volume, unit_price, composition, dosage_form, 
+                    cis_code, user_id)
 VALUES 
 ('doliprane', '13/06/2021', '3', '8', '100 mg', null, '2.18', 'acide citrique anhydre, mannitol, saccharine sodique', 'comprimé', 
-    '64793681', 1, 2),
+    '64793681', 1),
 ('efferalgan', '18/07/2021', '5', '16', '500 mg', null, '3.29', 'hydroxypropylcellulose, croscarmellose sodique, béhénate de glycérol', 
-    'granulés en sachet', '61128406', 1, 2),
+    'granulés en sachet', '61128406', 1),
 
 ('doliprane', '23/06/2021', '6', '7', '100 mg', null, '2.18', 'acide citrique anhydre, mannitol, saccharine sodique', 
-    'poudre pour solution buvable en sachet', '64793974', 2, 2),
+    'poudre pour solution buvable en sachet', '6479397', 2),
 ('efferalgan', '28/07/2021', '3', '7', '500 mg', null, '3.29', 'hydroxypropylcellulose, croscarmellose sodique, béhénate de glycérol', 
-    'comprimé', '61128680', 2, 2),
+    'comprimé', '61128680', 2),
 
 ('eludril', '23/08/2021', '8', null, null, '500 ml', '6.43', 'Chlorhexidine gluconate solution, Chlorobutanol hémihydrate, Lévomenthol', 
-    'solution liquide', '64793974', 3, 2),
+    'solution liquide', '64793974', 3),
 ('spafson', '29/04/2021', '3', '30', '160 mg', null, '3.16', 'actose monohydraté, saccharose, acétate de polyvinyle', 'comprimé', 
-    '34009318', 3, 7),
+    '34009318', 3),
 
 ('voltarène', '23/07/2021', '4', '30', '50 mg', null, '2.86', 'saccharose, alcool cétylique, silice colloïdale anhydre', 'comprimé', 
-    '65215068', 4, 1),
+    '65215068', 4),
 ('spafson', '29/05/2021', '1', '30', '160 mg', null, '3.16', 'actose monohydraté, saccharose, acétate de polyvinyle', 'comprimé', 
-    '34009318', 4, 7);
+    '34009318', 4);
 
 
 INSERT INTO "order" (order_number, status, user_id)

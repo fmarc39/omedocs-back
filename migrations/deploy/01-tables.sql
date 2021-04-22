@@ -3,12 +3,6 @@
 -- Création des tables SQL
 BEGIN;
 
-CREATE TABLE pathology (
-    -- On auto-incrémente l'id
-    id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    name TEXT NOT NULL
-);
-
 CREATE TABLE "user" (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     user_type TEXT NOT NULL,
@@ -37,9 +31,8 @@ CREATE TABLE product (
     composition TEXT NOT NULL,
     dosage_form TEXT NOT NULL,
     cis_code TEXT NOT NULL,
-    -- clés étrangères
-    user_id INT REFERENCES "user"(id),
-    pathology_id INT REFERENCES pathology(id)
+    -- clé étrangère
+    user_id INT REFERENCES "user"(id)
 );
 
 CREATE TABLE "order" (

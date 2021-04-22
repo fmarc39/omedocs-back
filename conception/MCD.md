@@ -1,10 +1,4 @@
 
-PATHOLOGIE: nom
-
-:
-contient, 0N PRODUIT, 11 PATHOLOGIE
-
-:
 PRODUIT: nom du produit, date de péremption, nombre de boîtes, quantité dans une boîte, masse, volume, prix unitaire, composition, forme pharmaceutique, code CIS
 :
 

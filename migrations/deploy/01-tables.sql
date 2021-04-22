@@ -21,7 +21,7 @@ CREATE TABLE "user" (
 
 CREATE TABLE product (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    product_name TEXT NOT NULL,
+    name TEXT NOT NULL,
     expiration_date TEXT NOT NULL,
     number_of_boxes TEXT NOT NULL, 
     quantity_in_box TEXT NULL,

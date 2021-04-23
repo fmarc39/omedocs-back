@@ -68,7 +68,7 @@ module.exports = {
             // On extrait les données de l'utilisateur qui sont stockés en base de données
             const userData = {
                 user
-            };
+            }; 
 
             // Génère un token qui dure 30 minutes
             const accessToken = jsonwebtoken.sign(userData, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '30m',  algorithm: 'HS256' });

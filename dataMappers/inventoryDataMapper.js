@@ -19,7 +19,7 @@ module.exports = {
     async findUserInventory(user_id) {
         const result = await client.query(`
             SELECT *
-            FROM inventory 
+            FROM product 
             WHERE user_id = $1`,
             [user_id]
         );

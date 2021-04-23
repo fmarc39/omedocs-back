@@ -27,41 +27,28 @@ module.exports = {
         }
 
         // Envoi des infos du médicament sous format JSON avec un status de succès
-        response.status(201).json({ data: newProduct });
+        response.status(201).json({ addedProduct: newProduct });
     },
 
     async getInventory(request, response) {
-        console.log('Hello world');
-        const userId = parseInt(request.params.userId, 10);
-
-        console.log(userId);
+        const { userId } = request.params;
 
         const userInventory = await findUserInventory(userId);
 
-        console.log('Hola');
-        console.log(userInventory);
-
-         // Si aucun inventaire de l'utilisateur est trouvé, on renvoit une erreur d'authentification (401)
-         if (! userInventory) {
+        // Si aucun inventaire de l'utilisateur n'est trouvé, on renvoit une erreur d'authentification (401)
+        if (! userInventory) {
             response.status(401).json({
                 error: {
                     name: "authentification_error",
                     detail: "bad-credentials"
                 }
             });
-
-            // On extrait les données d'inventaire de l'utilisateur qui sont stockés en base de données
-            const inventoryData = {
-                userInventory
-            };
-            
-            response.status(200).json({ 
-                status: "success",
-                user: inventoryData, 
-                accessToken
-            });
-        };
-
-    } 
+         };
+        
+        response.status(200).json({ 
+            status: "success",
+            userInventory, 
+        });   
+    },
 
 };

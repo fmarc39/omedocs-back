@@ -32,12 +32,13 @@ module.exports = {
 
     // Récupère et renvoit sous format JSON l'inventaire du vendeur
     async getInventory(request, response) {
-        // On récupère l'id de l'utilisateur ...
+        // On récupère l'id de l'utilisateur et on le parse en integer
         const userId = parseInt(request.params.userId, 10);
 
+        // Récupère les médicaments dans l'inventaire du vendeur
         const userInventory = await findUserInventory(userId);
 
-        // Si aucun inventaire de l'utilisateur n'est trouvé, on renvoit une erreur d'authentification (401)
+        // Si aucun inventaire du vendeur n'est trouvé, on renvoit une erreur d'authentification (401)
         if (! userInventory) {
             response.status(401).json({
                 error: {
@@ -47,6 +48,7 @@ module.exports = {
             });
          };
         
+         // Envoi de l'inventaire du vendeur sous format JSON avec un status de succès
         response.status(200).json({ 
             status: "success",
             userInventory, 

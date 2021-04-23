@@ -4,7 +4,7 @@ const client = require('./client');
 // On export les fonctions
 module.exports = {
 
-    // Insère les données du médicament ajouté par un vendeur dans la base de données 
+    // Insère et sélectionne les données du médicament ajouté par un vendeur dans la base de données 
     async insertProduct(name, expiration, quantity, price, cis, user_id) {
         const result = await client.query(`
             INSERT INTO product (name, expiration_date, quantity, unit_price, cis_code, user_id)
@@ -17,6 +17,7 @@ module.exports = {
         return result.rows;
     },
 
+    // Sélectionne depuis la bdd les données des médicaments dans l'inventaire du vendeur
     async findUserInventory(user_id) {
         const result = await client.query(`
             SELECT *

@@ -40,8 +40,8 @@ module.exports = {
             return;
         }
 
-        // Envoi des infos de l'utilisateur sous format JSON avec un status de succès
-        response.status(201).json({ data: newUser });
+        // Envoit une réponse avec un status de succès
+        response.status(201).json({ data : newUser });
     },
 
 
@@ -68,7 +68,7 @@ module.exports = {
             // On extrait les données de l'utilisateur qui sont stockés en base de données
             const userData = {
                 user
-            }; 
+            };
 
             // Génère un token qui dure 30 minutes
             const accessToken = jsonwebtoken.sign(userData, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '30m',  algorithm: 'HS256' });
@@ -76,7 +76,7 @@ module.exports = {
             // Renvoit notre token avec les infos de l'utilisateur au front
             response.status(200).json({ 
                 status: "success",
-                user: userData, 
+                user, 
                 accessToken
             });
 

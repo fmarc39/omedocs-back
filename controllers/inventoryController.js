@@ -33,7 +33,7 @@ module.exports = {
     // Récupère et renvoit sous format JSON l'inventaire du vendeur
     async getInventory(request, response) {
         // On récupère l'id de l'utilisateur ...
-        const { userId } = request.params;
+        const userId = parseInt(request.params.userId, 10);
 
         const userInventory = await findUserInventory(userId);
 

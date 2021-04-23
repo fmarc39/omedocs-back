@@ -14,4 +14,4 @@ const client = new Pool({
 });
 
 // On export les nouvelles connexions faites à notre base de données
-module.exports = client;n 
+module.exports = client;

@@ -23,13 +23,8 @@ CREATE TABLE product (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name TEXT NOT NULL,
     expiration_date TEXT NOT NULL,
-    number_of_boxes TEXT NOT NULL, 
-    quantity_in_box TEXT NULL,
-    mass TEXT NULL,
-    volume TEXT NULL,
+    quantity TEXT NOT NULL, 
     unit_price TEXT NOT NULL, 
-    composition TEXT NOT NULL,
-    dosage_form TEXT NOT NULL,
     cis_code TEXT NOT NULL,
     -- clé étrangère
     user_id INT REFERENCES "user"(id)

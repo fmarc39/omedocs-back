@@ -3,20 +3,16 @@ const client = require('./client');
 
 // On export les fonctions
 module.exports = {
-
-    // Renvoyer le produit (en 1 seule fois) avec toutes les pharmacies qui l'ont
     
-
     async findProductsByName(name) {
         console.log(name);
 
         const result = await client.query(`
-            SELECT * 
-                FROM product 
-            JOIN "user"
-                ON "user".id = product.user_id
-            WHERE product.name ILIKE $1
-            `,
+            SELECT *
+                FROM "user"
+            JOIN product
+                ON product.user_id = "user".id
+            WHERE product.name ILIKE $1`,
             [`${name}%`]
         );
 
@@ -25,14 +21,15 @@ module.exports = {
     },
 
   async findProductsByCis(cis) {
+        console.log(cis);
+
         const result = await client.query(`
-            SELECT * 
-            FROM product 
-            JOIN "user"
-                ON
-            WHERE product.cis_code ILIKE $1'
-            `,
-             [`${cis}%`]
+            SELECT *
+                FROM "user"
+            JOIN product
+                ON product.user_id = "user".id
+            WHERE product.cis_code ILIKE $1`,
+            [`${cis}%`]
         );
 
         // Renvoit ces données 

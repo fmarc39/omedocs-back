@@ -1,15 +1,15 @@
 // On importe les fonctions du fichier inventoryDataMapper
-const { findProductsByName } = require('../dataMappers/listProductsDataMapper');
+const { findProductsByName, findProductsByCis } = require('../dataMappers/listProductsDataMapper');
 
 // On export nos fonctions
 module.exports = {
 
-    async getsProductsByName (request, response, next) {
+    async getProductsByName (request, response, next) {
 
-        const productsName = request.query.name;
+        const productsValue = request.query.value;
 
         try {
-            const products = await findProductsByName(productsName);
+            const products = await findProductsByName(productsValue);
 
             if (! products) {
                 response.status(401).json({
@@ -31,11 +31,11 @@ module.exports = {
         }
     },
 
-    async getsProductsByCis (request, response, next) {
-        const productsCis = request.query.cis;
+    async getProductsByCis (request, response, next) {
+        const productsValue = request.query.value;
 
         try {
-            const products = await findProductsByCis(productsCis);
+            const products = await findProductsByCis(productsValue);
 
             if (! products) {
                 response.status(401).json({

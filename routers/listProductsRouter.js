@@ -9,9 +9,9 @@ const authToken = require('../controllers/authentificateController');
 const router = express.Router();
 
 // On crée une route pour ajouter un médicament à l'inventaire du vendeur
-router.get('/productsbyname', listProductsController.getsProductsByName);
+router.get('/productsbyname', listProductsController.getProductsByName);
 
-router.get('/productsbycis', listProductsController.getsProductsByCis);
+router.get('/productsbycis', listProductsController.getProductsByCis);
 
 // Export la constante 'router'
 module.exports = router; 

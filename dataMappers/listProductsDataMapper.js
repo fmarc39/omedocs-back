@@ -4,6 +4,9 @@ const client = require('./client');
 // On export les fonctions
 module.exports = {
 
+    // Renvoyer le produit (en 1 seule fois) avec toutes les pharmacies qui l'ont
+    
+
     async findProductsByName(name) {
         console.log(name);
 

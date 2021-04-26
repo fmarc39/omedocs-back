@@ -6,7 +6,7 @@ module.exports = {
 
     // Récupère et renvoit sous format JSON les informations du médicament ajouté à l'inventaire du vendeur
     async createProduct (request, response, next) {
-        try {
+        try {            
             // Récupère les infos du médicament
             const newProduct = await insertProduct(
                 request.body.name,
@@ -44,7 +44,7 @@ module.exports = {
             const userInventory = await findUserInventory(userId);
 
             // Si aucun inventaire du vendeur n'est trouvé, on renvoit une erreur d'authentification (401)
-            if (! userInventory) {
+            if (!userInventory) {
                 response.status(401).json({
                     error: {
                         name: "authentification_error",

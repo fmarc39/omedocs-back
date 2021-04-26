@@ -42,7 +42,7 @@ module.exports = {
             }
 
             // Envoit une réponse avec un status de succès
-            response.status(201).json({ data : newUser });
+            response.status(201).json({ newUser });
         } catch (error) {
             next(error);
         }
@@ -56,7 +56,7 @@ module.exports = {
             const user = await findUserByEmail(request.body.emailConnexion);
         
             // Si aucun utilisateur a cet email, on renvoit une erreur d'authentification (401)
-            if (! user) {
+            if (!user) {
                 response.status(401).json({
                     error: {
                         name: "authentification_error",
@@ -68,7 +68,7 @@ module.exports = {
 
             // Je vérifie que le mot de passe haché qui est enregistré dans ma base de données correspond au mot de passe donnée par 
             // l'utilisateur
-            if (await bcrypt.compare(request.body.passwordConnexion, user[0].password)) {
+            if (await bcrypt.compare(request.body.passwordConnexion, user.password)) {
 
                 // On extrait les données de l'utilisateur qui sont stockés en base de données
                 const userData = {

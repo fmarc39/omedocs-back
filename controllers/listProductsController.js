@@ -11,7 +11,7 @@ module.exports = {
         try {
             const products = await findProductsByName(productsValue);
 
-            if (! products) {
+            if (!products) {
                 response.status(401).json({
                     error: {
                         name: "authentification_error",
@@ -37,7 +37,7 @@ module.exports = {
         try {
             const products = await findProductsByCis(productsValue);
 
-            if (! products) {
+            if (!products) {
                 response.status(401).json({
                     error: {
                         name: "authentification_error",

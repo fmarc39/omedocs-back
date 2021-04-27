@@ -11,13 +11,10 @@ module.exports = {
         try {
             const products = await findProductsByName(productsValue);
 
+            // Si on ne récupère pas de médicament(s), on renvoit une erreur indiquant que le serveur n'a pas trouvé 
+            // la requête demandée (404)  
             if (!products) {
-                response.status(401).json({
-                    error: {
-                        name: "authentification_error",
-                        detail: "bad-credentials"
-                    }
-                });
+                next();
             };
 
             // Envoi de l'inventaire du vendeur sous format JSON avec un status de succès
@@ -37,13 +34,10 @@ module.exports = {
         try {
             const products = await findProductsByCis(productsValue);
 
+            // Si on ne récupère pas de médicament(s), on renvoit une erreur indiquant que le serveur n'a pas trouvé 
+            // la requête demandée (404)  
             if (!products) {
-                response.status(401).json({
-                    error: {
-                        name: "authentification_error",
-                        detail: "bad-credentials"
-                    }
-                });
+                next();
             };
 
             // Envoi de l'inventaire du vendeur sous format JSON avec un status de succès

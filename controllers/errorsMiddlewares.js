@@ -10,10 +10,11 @@ module.exports = {
         })
     },
 
-    async error500(error, _, response) {
+    async error500(error, request, response, next) {
         response.status(500).json({
             error: {
                 message: "Fatal error",
+                messageDetail: error.message,
                 infos: error
             }
         })

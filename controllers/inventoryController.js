@@ -17,18 +17,15 @@ module.exports = {
                 request.body.user_id,
             );
 
-            // Si on ne récupère pas de médicament, on envoit une erreur indiquant une mauvaise requête du client (400)
+            // Si on ne récupère pas de nouveau médicament, on renvoit une erreur indiquant que le serveur n'a pas trouvé 
+            // la requête demandée (404)            
             if (!newProduct) {
-                response.status(400).json({
-                    error: {
-                        message: "newProduct_impossible"
-                    }
-                });
-                return;
-            }
+                next();
+            };
 
             // Envoi des infos du médicament sous format JSON avec un status de succès
             response.status(201).json({ addedProduct: newProduct });
+
         } catch (error) {
             next(error);
         }
@@ -43,14 +40,10 @@ module.exports = {
             // Récupère les médicaments dans l'inventaire du vendeur
             const userInventory = await findUserInventory(userId);
 
-            // Si aucun inventaire du vendeur n'est trouvé, on renvoit une erreur d'authentification (401)
+            // Si on ne récupère pas de médicament(s), on renvoit une erreur indiquant que le serveur n'a pas trouvé 
+            // la requête demandée (404)  
             if (!userInventory) {
-                response.status(401).json({
-                    error: {
-                        name: "authentification_error",
-                        detail: "bad-credentials"
-                    }
-                });
+                next();
             };
             
             // Envoi de l'inventaire du vendeur sous format JSON avec un status de succès
@@ -58,6 +51,7 @@ module.exports = {
                 status: "success",
                 userInventory, 
             }); 
+
         } catch (error) {
             next(error);
         }

@@ -31,18 +31,15 @@ module.exports = {
                 request.body.zip_code
             );
 
-            // Si on ne récupère pas de nouvel utilisateur, on envoit une erreur indiquant une mauvaise requête du client (400)
+            // Si on ne récupère pas de nouvel utilisateur, on renvoit une erreur indiquant que le serveur n'a pas trouvé 
+            // la requête demandée (404)
             if (!newUser) {
-                response.status(400).json({
-                    error: {
-                        message: "newUser_impossible"
-                    }
-                });
-                return;
-            }
+                next();
+            };
 
             // Envoit une réponse avec un status de succès
             response.status(201).json({ newUser });
+
         } catch (error) {
             next(error);
         }
@@ -51,7 +48,7 @@ module.exports = {
 
     // Lorsqu'un utilisateur essaye de se connecter, on vérifie que les données entrées sont valides
     async login (request, response, next) {
-        try {
+        try {            
             // Voir dans ma base de données si j'ai un utilisateur avec cet email
             const user = await findUserByEmail(request.body.emailConnexion);
         
@@ -94,6 +91,7 @@ module.exports = {
                     }
                 });
             };
+
         } catch (error) {
             next(error);
         }

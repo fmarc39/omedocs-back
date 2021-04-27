@@ -12,9 +12,9 @@ const authMiddleware = jwt({ secret: process.env.ACCESS_TOKEN_SECRET, algorithms
 // Permet de créer des nouveaux gestionnaires de routes pour manipuler les requêtes
 const router = express.Router();
 
-// On crée une route pour ajouter un médicament à l'inventaire du vendeur
+// Route pour lister le/les médicament(s) par nom
 router.get('/productsbyname', listProductsController.getProductsByName);
-
+// Route pour lister le/les médicament(s) par code CIS (code unique à chaque organisme médical)
 router.get('/productsbycis', listProductsController.getProductsByCis);
 
 // Export la constante 'router'

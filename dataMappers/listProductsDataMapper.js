@@ -3,10 +3,8 @@ const client = require('./client');
 
 // On export les fonctions
 module.exports = {
-    
+    // Sélectionne depuis la bdd les données du/des médicament(s) contenant le nom envoyé et les données de son/leur vendeur 
     async findProductsByName(name) {
-        console.log(name);
-
         const result = await client.query(`
             SELECT *
                 FROM "user"
@@ -19,10 +17,9 @@ module.exports = {
         // Renvoit ces données 
         return result.rows;
     },
-
-  async findProductsByCis(cis) {
-        console.log(cis);
-
+    
+    // Sélectionne depuis la bdd les données du/des médicament(s) contenant le code CIS envoyé et les données de son/leur vendeur 
+    async findProductsByCis(cis) {
         const result = await client.query(`
             SELECT *
                 FROM "user"
@@ -35,6 +32,4 @@ module.exports = {
         // Renvoit ces données 
         return result.rows;
     }
-
 }
-

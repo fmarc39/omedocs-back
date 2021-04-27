@@ -3,7 +3,6 @@ const { insertProduct, findUserInventory } = require('../dataMappers/inventoryDa
 
 // On export nos fonctions
 module.exports = {
-
     // Récupère et renvoit sous format JSON les informations du médicament ajouté à l'inventaire du vendeur
     async createProduct (request, response, next) {
         try {            
@@ -25,7 +24,7 @@ module.exports = {
 
             // Envoi des infos du médicament sous format JSON avec un status de succès
             response.status(201).json({ addedProduct: newProduct });
-
+        // S'il y a une erreur au niveau du serveur, on renvoit le statut d'erreur 500
         } catch (error) {
             next(error);
         }
@@ -46,15 +45,14 @@ module.exports = {
                 next();
             };
             
-            // Envoi de l'inventaire du vendeur sous format JSON avec un status de succès
+            // Envoi de l'inventaire du vendeur sous format JSON avec un statut de succès
             response.status(200).json({ 
                 status: "success",
                 userInventory, 
             }); 
-
+        // S'il y a une erreur au niveau du serveur, on renvoit le statut d'erreur 500
         } catch (error) {
             next(error);
         }
     },
-
 };

@@ -10,7 +10,6 @@ const router = express.Router();
 // On crée une route pour l'inscription et une autre pour la connexion d'un utilisateur
 router.post('/signup', connectController.signup);
 router.post('/login', connectController.login); 
-/* router.get('/posts', authToken, connectController.getPosts); */
 
 // Export la constante 'router'
 module.exports = router; 

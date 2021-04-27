@@ -3,12 +3,13 @@ const { findProductsByName, findProductsByCis } = require('../dataMappers/listPr
 
 // On export nos fonctions
 module.exports = {
-
+    // Récupère et renvoit sous format JSON le/les médicament(s)
     async getProductsByName (request, response, next) {
-
+        // On récupère une partie/la totalité du nom du/des médicament(s)
         const productsValue = request.query.value;
 
         try {
+            // Récupère le/les médicament(s)
             const products = await findProductsByName(productsValue);
 
             // Si on ne récupère pas de médicament(s), on renvoit une erreur indiquant que le serveur n'a pas trouvé 
@@ -17,21 +18,25 @@ module.exports = {
                 next();
             };
 
-            // Envoi de l'inventaire du vendeur sous format JSON avec un status de succès
+            // Envoi du/des médicament(s) sous format JSON avec un status de succès
             response.status(200).json({ 
                 status: "success",
                 products, 
             }); 
-                console.log(products)
+
+        // S'il y a une erreur au niveau du serveur, on renvoit le statut d'erreur 500
         } catch (error) {
             next(error);
         }
     },
 
+    // Récupère et renvoit sous format JSON le/les médicament(s)
     async getProductsByCis (request, response, next) {
+        // On récupère une partie/la totalité du nom du/des médicament(s)
         const productsValue = request.query.value;
 
         try {
+            // Récupère le/les médicament(s)
             const products = await findProductsByCis(productsValue);
 
             // Si on ne récupère pas de médicament(s), on renvoit une erreur indiquant que le serveur n'a pas trouvé 
@@ -40,14 +45,14 @@ module.exports = {
                 next();
             };
 
-            // Envoi de l'inventaire du vendeur sous format JSON avec un status de succès
+            // Envoi du/des médicament(s) sous format JSON avec un status de succès
             response.status(200).json({ 
                 status: "success",
                 products, 
             }); 
+        // S'il y a une erreur au niveau du serveur, on renvoit le statut d'erreur 500
         } catch (error) {
             next(error);
         }
     }
-
 }

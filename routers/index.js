@@ -18,7 +18,9 @@ router.use(inventoryRouter);
 router.use(listProductsRouter);
 router.use(listEstablishmentsRouter);
 
+// S'il y a une erreur 404, on arrivera a ce middleware qui gère ce type d'erreur
 router.use(errorsMiddlewares.error404);
+// S'il y a une erreur 500, on arrivera a ce middleware qui gère ce type d'erreur
 router.use(errorsMiddlewares.error500);
 
 // Export la constante 'router' qui utilise le fichier connectRouter

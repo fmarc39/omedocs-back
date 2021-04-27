@@ -3,12 +3,11 @@
 const jsonwebtoken = require('jsonwebtoken');
 // On importe les fonctions du fichier connectDataMapper
 const { insertUser, findUserByEmail } = require('../dataMappers/connectDataMapper');
-// On récupère la librairie bcrypt qui permet de hasher les mot de passes
+// On récupère la librairie bcrypt qui permet de hasher les mots de passe
 const bcrypt = require('bcrypt');
 
 // On export nos fonctions
 module.exports = {    
-    
     // Récupère et renvoit sous format JSON les informations du nouvel utilisateur qui s'est inscrit
     async signup (request, response, next) {
         try {
@@ -39,7 +38,7 @@ module.exports = {
 
             // Envoit une réponse avec un status de succès
             response.status(201).json({ newUser });
-
+        // S'il y a une erreur au niveau du serveur, on renvoit le statut d'erreur 500
         } catch (error) {
             next(error);
         }
@@ -91,10 +90,9 @@ module.exports = {
                     }
                 });
             };
-
+        // S'il y a une erreur au niveau du serveur, on renvoit le statut d'erreur 500
         } catch (error) {
             next(error);
         }
-    },
-    
+    }, 
 }; 

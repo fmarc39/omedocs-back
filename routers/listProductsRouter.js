@@ -1,6 +1,6 @@
 // Récupère Express
 const express = require('express');
-// On rcupère un module qui nous apporte un middleware de validation des JSON Web Tokens
+// On récupère un module qui nous apporte un middleware de validation des JSON Web Tokens
 const jwt = require('express-jwt');
 
 // Importe le controller qui gère l'inventaire d'un vendeur

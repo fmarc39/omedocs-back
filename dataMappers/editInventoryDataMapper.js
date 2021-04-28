@@ -1,0 +1,34 @@
+// Récupère le pool de clients PostgreSQL
+const client = require('./client'); 
+
+// On export les fonctions
+module.exports = {
+    // Supprime et sélectionne (avec "RETURNING") un produit de l'inventaire du vendeur
+    async deleteProduct(id) {
+        const result = await client.query(`
+            DELETE FROM product
+                WHERE id=$1
+            RETURNING *`,
+            [id]
+        );
+        console.log(result.rows);
+        // Renvoit ces données 
+        return result.rows;
+    },
+
+    // Met à jour la quantité disponible du produit dans l'inventaire du vendeur et sélectionne ce produit (avec "RETURNING")
+    async updateProduct(quantity, id) {
+        console.log(quantity);
+        console.log(id);
+        const result = await client.query(`
+            UPDATE product
+                SET quantity=$1
+                    WHERE id=$2
+            RETURNING *`,
+            [quantity, id]
+        );
+        console.log(result.rows);
+        // Renvoit ces données 
+        return result.rows;
+    },
+}

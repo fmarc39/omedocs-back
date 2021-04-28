@@ -1,7 +1,7 @@
 // On importe les fonctions du fichier listEstablishmentsDataMapper
 const {findEstablishments } = require('../dataMappers/listEstablishmentsDataMapper');
 
-// On export nos fonctions
+// On export notre fonction
 module.exports = {
     // Récupère et renvoit sous format JSON l'/les organismes
     async getsListEstablishments (request, response, next) {

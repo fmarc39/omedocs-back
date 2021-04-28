@@ -1,12 +1,14 @@
 // Récupère Express
 const express = require('express');
 
-// Importe le fichier connectRouter qui s'occupe des endpoints de connexion
+// Importe les routers enfants
 const connectRouter = require('./connectRouter');
-// Importe le fichier inventoryRouter qui s'occupe des enpoints d'inventaire d'un utilisateur
 const inventoryRouter = require('./inventoryRouter');
 const listProductsRouter = require('./listProductsRouter');
 const listEstablishmentsRouter = require('./listEstablishmentsRouter');
+const editInventoryRouter = require('./editInventoryRouter');
+const stripeRouter = require('./stripeRouter');
+// Importe le controller qui gère les erreurs
 const errorsMiddlewares = require('../controllers/errorsMiddlewares');
 
 // Permet de créer des nouveaux gestionnaires de routes pour manipuler les requêtes
@@ -17,6 +19,8 @@ router.use(connectRouter);
 router.use(inventoryRouter);
 router.use(listProductsRouter);
 router.use(listEstablishmentsRouter);
+router.use(editInventoryRouter);
+router.use(stripeRouter);
 
 // S'il y a une erreur 404, on arrivera a ce middleware qui gère ce type d'erreur
 router.use(errorsMiddlewares.error404);

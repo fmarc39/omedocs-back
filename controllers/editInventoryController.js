@@ -18,7 +18,7 @@ module.exports = {
                 next();
             };
 
-            // Envoi des infos du médicament sous format JSON avec un status de succès
+            // Envoi des infos du médicament sous format JSON avec un statut de succès
             response.status(200).json({ 
                 status: "success",
                 product
@@ -37,16 +37,16 @@ module.exports = {
         const { quantity } = request.query;
 
         try {
-            // Récdupère les infos du médicament avec la nouvelle quantité
+            // Récupère les infos du médicament avec la nouvelle quantité
             const product = await updateProduct(quantity, productId);
-
+            console.log(product);
             // Si on ne récupère pas de médicament, on renvoit une erreur indiquant que le serveur n'a pas trouvé 
             // la requête demandée (404) 
             if (!product) {
                 next();
             };
 
-            // Envoi des infos du médicament sous format JSON avec un status de succès
+            // Envoi des infos du médicament sous format JSON avec un statut de succès
             response.status(200).json({ 
                 status: "success",
                 product 

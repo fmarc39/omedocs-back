@@ -36,7 +36,7 @@ module.exports = {
                 next();
             };
 
-            // Envoit une réponse avec un status de succès
+            // Envoit une réponse avec un statut de succès
             response.status(201).json({ newUser });
         // S'il y a une erreur au niveau du serveur, on renvoit le statut d'erreur 500
         } catch (error) {

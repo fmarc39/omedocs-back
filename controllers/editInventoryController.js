@@ -21,7 +21,7 @@ module.exports = {
             // Envoi des infos du médicament sous format JSON avec un status de succès
             response.status(200).json({ 
                 status: "success",
-                product, 
+                product
             }); 
         // S'il y a une erreur au niveau du serveur, on renvoit le statut d'erreur 500
         } catch (error) {
@@ -49,7 +49,7 @@ module.exports = {
             // Envoi des infos du médicament sous format JSON avec un status de succès
             response.status(200).json({ 
                 status: "success",
-                product, 
+                product 
             }); 
         // S'il y a une erreur au niveau du serveur, on renvoit le statut d'erreur 500
         } catch (error) {

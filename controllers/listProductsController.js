@@ -1,4 +1,4 @@
-// On importe les fonctions du fichier inventoryDataMapper
+// On importe les fonctions du fichier listProductsDataMapper
 const { findProductsByName, findProductsByCis } = require('../dataMappers/listProductsDataMapper');
 
 // On export nos fonctions
@@ -21,7 +21,7 @@ module.exports = {
             // Envoi du/des médicament(s) sous format JSON avec un status de succès
             response.status(200).json({ 
                 status: "success",
-                products, 
+                products
             }); 
 
         // S'il y a une erreur au niveau du serveur, on renvoit le statut d'erreur 500
@@ -48,7 +48,7 @@ module.exports = {
             // Envoi du/des médicament(s) sous format JSON avec un status de succès
             response.status(200).json({ 
                 status: "success",
-                products, 
+                products
             }); 
         // S'il y a une erreur au niveau du serveur, on renvoit le statut d'erreur 500
         } catch (error) {

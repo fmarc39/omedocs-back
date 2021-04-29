@@ -1,5 +1,5 @@
 // On importe les fonctions du fichier profilDataMapper
-const { updateProfil } = require('../dataMappers/profilDataMapper');
+const { updateEmail, updatePhoneNumber } = require('../dataMappers/profilDataMapper');
 
 // On export nos fonctions
 module.exports = {
@@ -12,7 +12,7 @@ module.exports = {
 
         try {
             // Récupère les infos du profil modifié de l'utilisateur
-            const profil = await updateProfil(newEmail, userId);
+            const profil = await updateEmail(newEmail, userId);
 
             // Si on ne récupère pas d'utilisateur, on renvoit une erreur indiquant que le serveur n'a pas trouvé 
             // la requête demandée (404) 
@@ -39,7 +39,7 @@ module.exports = {
 
         try {
             // Récupère les infos du profil modifié de l'utilisateur
-            const profil = await updateProfil(newPhoneNumber, userId);
+            const profil = await updatePhoneNumber(newPhoneNumber, userId);
 
             // Si on ne récupère pas d'utilisateur, on renvoit une erreur indiquant que le serveur n'a pas trouvé 
             // la requête demandée (404) 

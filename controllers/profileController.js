@@ -1,5 +1,5 @@
-// On importe les fonctions du fichier profilDataMapper
-const { updateEmail, updatePhoneNumber } = require('../dataMappers/profilDataMapper');
+// On importe les fonctions du fichier profileDataMapper
+const { updateEmail, updatePhoneNumber } = require('../dataMappers/profileDataMapper');
 
 // On export nos fonctions
 module.exports = {
@@ -12,18 +12,18 @@ module.exports = {
 
         try {
             // Récupère les infos du profil modifié de l'utilisateur
-            const profil = await updateEmail(newEmail, userId);
+            const profile = await updateEmail(newEmail, userId);
 
             // Si on ne récupère pas d'utilisateur, on renvoit une erreur indiquant que le serveur n'a pas trouvé 
             // la requête demandée (404) 
-            if (!profil) {
+            if (!profile) {
                 next();
 
             } else {
                 // Envoi des infos de l'utilisateur sous format JSON avec un statut de succès
                 response.status(200).json({
                     status: "success",
-                    profil
+                    profile
                 });
             }
         // S'il y a une erreur au niveau du serveur, on renvoit le statut d'erreur 500
@@ -41,18 +41,18 @@ module.exports = {
 
         try {
             // Récupère les infos du profil modifié de l'utilisateur
-            const profil = await updatePhoneNumber(newPhoneNumber, userId);
+            const profile = await updatePhoneNumber(newPhoneNumber, userId);
 
             // Si on ne récupère pas d'utilisateur, on renvoit une erreur indiquant que le serveur n'a pas trouvé 
             // la requête demandée (404) 
-            if (!profil) {
+            if (!profile) {
                 next();
 
             } else {
                 // Envoi des infos de l'utilisateur sous format JSON avec un statut de succès
                 response.status(200).json({
                     status: "success",
-                    profil
+                    profile
                 });
             }
         // S'il y a une erreur au niveau du serveur, on renvoit le statut d'erreur 500

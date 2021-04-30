@@ -16,13 +16,14 @@ module.exports = {
             // la requête demandée (404) 
             if (!product) {
                 next();
-            };
-
-            // Envoi des infos du médicament sous format JSON avec un statut de succès
-            response.status(200).json({ 
-                status: "success",
-                product
-            }); 
+            
+            } else {
+                // Envoi des infos du médicament sous format JSON avec un statut de succès
+                response.status(200).json({ 
+                    status: "success",
+                    product
+                }); 
+            }
         // S'il y a une erreur au niveau du serveur, on renvoit le statut d'erreur 500
         } catch (error) {
             next(error); 
@@ -39,18 +40,19 @@ module.exports = {
         try {
             // Récupère les infos du médicament avec la nouvelle quantité
             const product = await updateProduct(quantity, productId);
-            console.log(product);
+            
             // Si on ne récupère pas de médicament, on renvoit une erreur indiquant que le serveur n'a pas trouvé 
             // la requête demandée (404) 
             if (!product) {
                 next();
-            };
-
-            // Envoi des infos du médicament sous format JSON avec un statut de succès
-            response.status(200).json({ 
-                status: "success",
-                product 
-            }); 
+                
+            } else {
+                // Envoi des infos du médicament sous format JSON avec un statut de succès
+                response.status(200).json({ 
+                    status: "success",
+                    product 
+                }); 
+            }
         // S'il y a une erreur au niveau du serveur, on renvoit le statut d'erreur 500
         } catch (error) {
             next(error); 

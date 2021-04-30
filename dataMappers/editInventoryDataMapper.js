@@ -13,7 +13,7 @@ module.exports = {
         );
 
         // Renvoit ces données 
-        return result.rows;
+        return result.rows[0];
     },
 
     // Met à jour la quantité disponible du produit dans l'inventaire du vendeur et sélectionne ce produit (avec "RETURNING")
@@ -25,8 +25,8 @@ module.exports = {
             RETURNING *`,
             [quantity, id]
         );
-        
+ 
         // Renvoit ces données 
-        return result.rows;
+        return result.rows[0];
     },
 }

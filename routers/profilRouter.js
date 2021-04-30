@@ -13,9 +13,9 @@ const authMiddleware = jwt({ secret: process.env.ACCESS_TOKEN_SECRET, algorithms
 const router = express.Router();
 
 // Route pour modifier l'email de l'utilisateur
-router.patch('/editmail/:userId', profilController.editEmail);
+router.patch('/editmail/:userId', authMiddleware, profilController.editEmail);
 // Route pour modifier le numéro de téléphone de l'utilisateur
-router.patch('/editphone/:userId', profilController.editPhoneNumber);
+router.patch('/editphone/:userId', authMiddleware, profilController.editPhoneNumber);
 
 // Export la constante 'router'
 module.exports = router; 

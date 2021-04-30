@@ -3,7 +3,7 @@ const client = require('./client');
 
 // On export les fonctions
 module.exports = {
-    // Met à jour et sélectionne (avec "RETURNING") le profil  modifié de l'utilisateur
+    // Met à jour l'email de l'utilisateur et sélectionne (avec "RETURNING") son profil modifié
     async updateEmail(email, id) {
         const result = await client.query(`
             UPDATE "user"
@@ -12,12 +12,12 @@ module.exports = {
             RETURNING *`,
             [email, id]
         );
-
+        
         // Renvoit ces données 
-        return result.rows;
+        return result.rows[0];
     },
 
-    // Met à jour et sélectionne (avec "RETURNING") le profil  modifié de l'utilisateur
+    // Met à jour le numéro de téléphone de l'utilisateur et sélectionne (avec "RETURNING") son profil modifié
     async updatePhoneNumber(phoneNumber, id) {
         const result = await client.query(`
             UPDATE "user"
@@ -26,8 +26,8 @@ module.exports = {
             RETURNING *`,
             [phoneNumber, id]
         );
-
+       
         // Renvoit ces données 
-        return result.rows;
+        return result.rows[0];
     }
 }

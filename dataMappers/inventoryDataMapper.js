@@ -26,7 +26,7 @@ module.exports = {
         );
 
         // Renvoit ces données 
-        return result.rows;
+        return result.rows[0];
     },
     
 }

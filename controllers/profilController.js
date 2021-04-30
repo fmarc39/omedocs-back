@@ -7,7 +7,7 @@ module.exports = {
     async editEmail (request, response, next) {
         // On récupère l'id de l'utilisateur et on le parse en integer
         const userId = parseInt(request.params.userId, 10);
- 
+        // On récupère le nouvel email de l'utilisateur
         const { newEmail } = request.query;
 
         try {
@@ -18,23 +18,25 @@ module.exports = {
             // la requête demandée (404) 
             if (!profil) {
                 next();
-            };
 
-            // Envoi des infos de l'utilisateur sous format JSON avec un statut de succès
-            response.status(200).json({
-                status: "success",
-                profil
-            });
+            } else {
+                // Envoi des infos de l'utilisateur sous format JSON avec un statut de succès
+                response.status(200).json({
+                    status: "success",
+                    profil
+                });
+            }
         // S'il y a une erreur au niveau du serveur, on renvoit le statut d'erreur 500
         } catch (error) {
             next(error);
         }
     },
 
+    // Récupère et renvoit sous format JSON les informations du profil modifié de l'utilisateur
     async editPhoneNumber(request, response, next) {
         // On récupère l'id de l'utilisateur et on le parse en integer
         const userId = parseInt(request.params.userId, 10);
-
+        // On récupère le nouveau numéro de téléphone de l'utilisateur
         const { newPhoneNumber } = request.query;
 
         try {
@@ -45,13 +47,14 @@ module.exports = {
             // la requête demandée (404) 
             if (!profil) {
                 next();
-            };
 
-            // Envoi des infos de l'utilisateur sous format JSON avec un statut de succès
-            response.status(200).json({
-                status: "success",
-                profil
-            });
+            } else {
+                // Envoi des infos de l'utilisateur sous format JSON avec un statut de succès
+                response.status(200).json({
+                    status: "success",
+                    profil
+                });
+            }
         // S'il y a une erreur au niveau du serveur, on renvoit le statut d'erreur 500
         } catch (error) {
             next(error);

@@ -13,9 +13,9 @@ const authMiddleware = jwt({ secret: process.env.ACCESS_TOKEN_SECRET, algorithms
 const router = express.Router();
 
 // Route qui supprime un médicament de l'inventaire du vendeur
-router.delete('/deleteProduct/:productId', inventoryController.removeProduct);
+router.delete('/deleteProduct/:productId', authMiddleware, inventoryController.removeProduct);
 // Route qui modifie la quantité d'un médicament dans l'inventaire du vendeur 
-router.patch('/modifyProduct/:productId', inventoryController.modifyProduct);
+router.patch('/modifyProduct/:productId', authMiddleware, inventoryController.modifyProduct);
 
 // Export la constante 'router'
 module.exports = router; 

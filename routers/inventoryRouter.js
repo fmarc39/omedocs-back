@@ -13,9 +13,9 @@ const authMiddleware = jwt({ secret: process.env.ACCESS_TOKEN_SECRET, algorithms
 const router = express.Router();
 
 // On crée une route pour ajouter un médicament à l'inventaire du vendeur
-router.post('/addProduct', inventoryController.createProduct);
+router.post('/addProduct', authMiddleware, inventoryController.createProduct);
 // Récupère l'inventaire du vendeur
-router.get('/inventory/:userId', inventoryController.getInventory);
+router.get('/inventory/:userId', authMiddleware, inventoryController.getInventory);
 
 // Export la constante 'router'
 module.exports = router; 

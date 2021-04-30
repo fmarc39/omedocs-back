@@ -34,16 +34,16 @@ module.exports = {
             // la requête demandée (404)
             if (!newUser) {
                 next();
-            };
-
-            // Envoit une réponse avec un statut de succès
-            response.status(201).json({ newUser });
+                
+            } else {
+                // Envoit une réponse avec un statut de succès
+                response.status(201).json({ newUser });
+            }
         // S'il y a une erreur au niveau du serveur, on renvoit le statut d'erreur 500
         } catch (error) {
             next(error);
         }
     },
-
 
     // Lorsqu'un utilisateur essaye de se connecter, on vérifie que les données entrées sont valides
     async login (request, response, next) {
@@ -60,12 +60,10 @@ module.exports = {
                     }
                 });
                 return;
-            };
 
-            // Je vérifie que le mot de passe haché qui est enregistré dans ma base de données correspond au mot de passe donnée par 
-            // l'utilisateur
-            if (await bcrypt.compare(request.body.passwordConnexion, user.password)) {
-
+            // Sinon, je vérifie que le mot de passe haché qui est enregistré dans ma base de données correspond au mot de passe donnée 
+            // par l'utilisateur
+            } else if (await bcrypt.compare(request.body.passwordConnexion, user.password)) {
                 // On extrait les données de l'utilisateur qui sont stockés en base de données
                 const userData = {
                     user
@@ -89,7 +87,7 @@ module.exports = {
                         detail: "bad-credentials"
                     }
                 });
-            };
+            };        
         // S'il y a une erreur au niveau du serveur, on renvoit le statut d'erreur 500
         } catch (error) {
             next(error);

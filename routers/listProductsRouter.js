@@ -13,9 +13,9 @@ const authMiddleware = jwt({ secret: process.env.ACCESS_TOKEN_SECRET, algorithms
 const router = express.Router();
 
 // Route pour lister le/les médicament(s) par nom
-router.get('/productsbyname', listProductsController.getProductsByName);
+router.get('/productsbyname', authMiddleware, listProductsController.getProductsByName);
 // Route pour lister le/les médicament(s) par code CIS (code unique à chaque organisme médical)
-router.get('/productsbycis', listProductsController.getProductsByCis);
+router.get('/productsbycis', authMiddleware, listProductsController.getProductsByCis);
 
 // Export la constante 'router'
 module.exports = router; 

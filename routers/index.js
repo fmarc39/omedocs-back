@@ -9,6 +9,7 @@ const listEstablishmentsRouter = require('./listEstablishmentsRouter');
 const editInventoryRouter = require('./editInventoryRouter');
 const stripeRouter = require('./stripeRouter');
 const profileRouter = require('./profileRouter');
+const countRouter = require('./countRouter');
 // Importe le controller qui gère les erreurs
 const errorsMiddlewares = require('../controllers/errorsMiddlewares');
 
@@ -23,6 +24,7 @@ router.use(listEstablishmentsRouter);
 router.use(editInventoryRouter);
 router.use(stripeRouter);
 router.use(profileRouter);
+router.use(countRouter);
 
 // S'il y a une erreur 404, on arrivera a ce middleware qui gère ce type d'erreur
 router.use(errorsMiddlewares.error404);

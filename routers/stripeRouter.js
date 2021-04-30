@@ -8,9 +8,9 @@ const stripeController = require('../controllers/stripeController');
 const router = express.Router();
 
 // Route qui renvoit la clé Stripe au front
-router.get('/stripe', stripeController.sendStripeKey);
+router.get('/', stripeController.sendStripeKey);
 // Route qui initialise l'instance de paiement
-router.post('/stripe/checkout', stripeController.initializePaymentInstance);
+router.post('/checkout', stripeController.initializePaymentInstance);
 
 // Export la constante 'router'
 module.exports = router; 

@@ -35,11 +35,11 @@ module.exports = {
         // On récupère l'id du médicament et on le parse en integer
         const productId = parseInt(request.params.productId, 10);
         // On récupère la nouvelle quantité du médicament
-        const { quantity } = request.query;
+        /// const { quantity } = request.query;
 
         try {
             // Récupère les infos du médicament avec la nouvelle quantité
-            const product = await updateProduct(quantity, productId);
+            const product = await updateProduct(request.body.quantity, productId);
             
             // Si on ne récupère pas de médicament, on renvoit une erreur indiquant que le serveur n'a pas trouvé 
             // la requête demandée (404) 

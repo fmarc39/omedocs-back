@@ -34,8 +34,6 @@ module.exports = {
     async modifyProduct (request, response, next) {
         // On récupère l'id du médicament et on le parse en integer
         const productId = parseInt(request.params.productId, 10);
-        // On récupère la nouvelle quantité du médicament
-        /// const { quantity } = request.query;
 
         try {
             // Récupère les infos du médicament avec la nouvelle quantité

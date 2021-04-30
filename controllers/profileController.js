@@ -7,12 +7,10 @@ module.exports = {
     async editEmail (request, response, next) {
         // On récupère l'id de l'utilisateur et on le parse en integer
         const userId = parseInt(request.params.userId, 10);
-        // On récupère le nouvel email de l'utilisateur
-        const { newEmail } = request.query;
 
         try {
             // Récupère les infos du profil modifié de l'utilisateur
-            const profile = await updateEmail(newEmail, userId);
+            const profile = await updateEmail(request.body.newEmail, userId);
 
             // Si on ne récupère pas d'utilisateur, on renvoit une erreur indiquant que le serveur n'a pas trouvé 
             // la requête demandée (404) 
@@ -36,12 +34,10 @@ module.exports = {
     async editPhoneNumber(request, response, next) {
         // On récupère l'id de l'utilisateur et on le parse en integer
         const userId = parseInt(request.params.userId, 10);
-        // On récupère le nouveau numéro de téléphone de l'utilisateur
-        const { newPhoneNumber } = request.query;
 
         try {
             // Récupère les infos du profil modifié de l'utilisateur
-            const profile = await updatePhoneNumber(newPhoneNumber, userId);
+            const profile = await updatePhoneNumber(request.body.newPhoneNumber, userId);
 
             // Si on ne récupère pas d'utilisateur, on renvoit une erreur indiquant que le serveur n'a pas trouvé 
             // la requête demandée (404) 

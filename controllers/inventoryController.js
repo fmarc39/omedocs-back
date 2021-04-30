@@ -40,9 +40,9 @@ module.exports = {
             // Récupère les médicaments dans l'inventaire du vendeur
             const userInventory = await findUserInventory(userId);
 
-            // Si on ne récupère pas de médicament(s), on renvoit une erreur indiquant que le serveur n'a pas trouvé 
+            // Si on ne récupère pas au moins 1 médicament, on renvoit une erreur indiquant que le serveur n'a pas trouvé 
             // la requête demandée (404)  
-            if (!userInventory) {
+            if (!userInventory[0]) {
                 next();
             
             } else {

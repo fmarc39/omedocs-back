@@ -25,10 +25,10 @@
     "express": "^4.17.1",
     "express-jwt": "^6.0.0",
     "jsonwebtoken": "^8.5.1",
+    "nodemon": "^2.0.7",
     "pg": "^8.6.0",
-    "nodemon": "^2.0.7"
-  },
-  "devDependencies": {
-  
+    "react-stripe-checkout": "^2.6.3",
+    "stripe": "^8.145.0",
+    "uuid": "^8.3.2"
   }
 }

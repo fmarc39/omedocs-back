@@ -3,7 +3,7 @@ const client = require('./client');
 
 // On export les fonctions
 module.exports = {
-    // Insère et sélectionne les données du médicament ajouté par un vendeur dans la base de données 
+    // Insère et sélectionne (avec "RETURNING") les données du médicament ajouté par un vendeur dans la base de données 
     async insertProduct(name, expiration, quantity, price, cis, user_id) {
         const result = await client.query(`
             INSERT INTO product (name, expiration_date, quantity, unit_price, cis_code, user_id)
@@ -26,6 +26,7 @@ module.exports = {
         );
 
         // Renvoit ces données 
-        return result.rows;
+        return result.rows[0];
     },
+    
 }

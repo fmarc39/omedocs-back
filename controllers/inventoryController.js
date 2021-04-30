@@ -20,10 +20,11 @@ module.exports = {
             // la requête demandée (404)            
             if (!newProduct) {
                 next();
-            };
 
-            // Envoi des infos du médicament sous format JSON avec un status de succès
-            response.status(201).json({ addedProduct: newProduct });
+            } else {
+                // Envoi des infos du médicament sous format JSON avec un statut de succès
+                response.status(201).json({ addedProduct: newProduct[0] });
+            }
         // S'il y a une erreur au niveau du serveur, on renvoit le statut d'erreur 500
         } catch (error) {
             next(error);
@@ -43,13 +44,14 @@ module.exports = {
             // la requête demandée (404)  
             if (!userInventory) {
                 next();
-            };
             
-            // Envoi de l'inventaire du vendeur sous format JSON avec un statut de succès
-            response.status(200).json({ 
-                status: "success",
-                userInventory, 
-            }); 
+            } else {
+                // Envoi de l'inventaire du vendeur sous format JSON avec un statut de succès
+                response.status(200).json({ 
+                    status: "success",
+                    userInventory 
+                }); 
+            }
         // S'il y a une erreur au niveau du serveur, on renvoit le statut d'erreur 500
         } catch (error) {
             next(error);

@@ -1,6 +1,6 @@
 // Récupère Express
 const express = require('express');
-// On rcupère un module qui nous apporte un middleware de validation des JSON Web Tokens
+// On récupère un module qui nous apporte un middleware de validation des JSON Web Tokens
 const jwt = require('express-jwt');
 
 // Importe le controller qui gère l'inventaire d'un vendeur
@@ -13,9 +13,9 @@ const authMiddleware = jwt({ secret: process.env.ACCESS_TOKEN_SECRET, algorithms
 const router = express.Router();
 
 // Route pour lister le/les médicament(s) par nom
-router.get('/productsbyname', listProductsController.getProductsByName);
+router.get('/productsbyname', authMiddleware, listProductsController.getProductsByName);
 // Route pour lister le/les médicament(s) par code CIS (code unique à chaque organisme médical)
-router.get('/productsbycis', listProductsController.getProductsByCis);
+router.get('/productsbycis', authMiddleware, listProductsController.getProductsByCis);
 
 // Export la constante 'router'
 module.exports = router; 

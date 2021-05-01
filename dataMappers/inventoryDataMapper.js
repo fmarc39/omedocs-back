@@ -13,7 +13,7 @@ module.exports = {
         );
             
         // Renvoit ces données 
-        return result.rows;
+        return result.rows[0];
     },
 
     // Sélectionne depuis la bdd les données des médicaments dans l'inventaire du vendeur

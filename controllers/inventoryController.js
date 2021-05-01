@@ -13,7 +13,7 @@ module.exports = {
                 request.body.quantity,
                 request.body.price,
                 request.body.cis,
-                request.body.user_id,
+                request.body.user_id
             );
 
             // Si on ne récupère pas de nouveau médicament, on renvoit une erreur indiquant que le serveur n'a pas trouvé 
@@ -23,7 +23,7 @@ module.exports = {
 
             } else {
                 // Envoi des infos du médicament sous format JSON avec un statut de succès
-                response.status(201).json({ addedProduct: newProduct[0] });
+                response.status(201).json({ addedProduct: newProduct });
             }
         // S'il y a une erreur au niveau du serveur, on renvoit le statut d'erreur 500
         } catch (error) {
@@ -39,19 +39,13 @@ module.exports = {
         try {
             // Récupère les médicaments dans l'inventaire du vendeur
             const userInventory = await findUserInventory(userId);
-
-            // Si on ne récupère pas au moins 1 médicament, on renvoit une erreur indiquant que le serveur n'a pas trouvé 
-            // la requête demandée (404)  
-            if (!userInventory[0]) {
-                next();
             
-            } else {
-                // Envoi de l'inventaire du vendeur sous format JSON avec un statut de succès
-                response.status(200).json({ 
-                    status: "success",
-                    userInventory 
-                }); 
-            }
+            // Envoi de l'inventaire du vendeur sous format JSON avec un statut de succès
+            response.status(200).json({ 
+                status: "success",
+                userInventory 
+            }); 
+            
         // S'il y a une erreur au niveau du serveur, on renvoit le statut d'erreur 500
         } catch (error) {
             next(error);

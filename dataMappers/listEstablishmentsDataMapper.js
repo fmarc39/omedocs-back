@@ -7,7 +7,7 @@ module.exports = {
     async findEstablishments(value, region) {
         // Si la région envoyée par le front a pour valeur "Toutes les régions",
         // on change sa valeur à un sting vide pour renvoyer les organismes de chaque région
-        if (region === 'Toutes les régions') {
+        if (region === 'toutes les régions') {
             region = ""
         };
 

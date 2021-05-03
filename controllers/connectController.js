@@ -11,23 +11,26 @@ module.exports = {
     // Récupère et renvoit sous format JSON les informations du nouvel utilisateur qui s'est inscrit
     async signup (request, response, next) {
         try {
-            // Hash le mot de passe
-            const hashedPassword = await bcrypt.hash(request.body.password, 10);
+            // Récupère les données à insérer en base de données
+            const { user_type, establishment, rpps, finess, adeli, email, password, phone_number, address, city, region, zip_code } = request.body;
 
-            // Récupère les infos du nouvel utilisateur
+            // Hash le mot de passe
+            const hashedPassword = await bcrypt.hash(password, 10);
+
+            // Envoi les données à la fonction 'insertUser' du dataMapper et récupère son résultat
             const newUser = await insertUser (
-                request.body.user_type,
-                request.body.establishment,
-                request.body.rpps,
-                request.body.finess,
-                request.body.adeli,
-                request.body.email, 
+                user_type,
+                establishment,
+                rpps,
+                finess,
+                adeli,
+                email, 
                 hashedPassword,
-                request.body.phone_number,
-                request.body.address,
-                request.body.city, 
-                request.body.region,
-                request.body.zip_code
+                phone_number,
+                address,
+                city, 
+                region,
+                zip_code
             );
 
             // Si on ne récupère pas de nouvel utilisateur, on renvoit une erreur indiquant que le serveur n'a pas trouvé 

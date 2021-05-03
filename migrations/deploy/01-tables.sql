@@ -35,13 +35,8 @@ CREATE TABLE "order" (
     order_number TEXT NOT NULL, 
     total_cost TEXT NOT NULL,
     status TEXT NULL,
-<<<<<<< HEAD
-    date TIMESTAMPTZ,
-    seller_name TEXT NOT NULL,
-=======
     date TIMESTAMPTZ DEFAULT NOW(),
-    pharmacy_name TEXT NOT NULL,
->>>>>>> order
+    seller_name TEXT NOT NULL,
     buyer_id INT REFERENCES "user"(id)
 );
 
@@ -57,11 +52,7 @@ CREATE TABLE notification (
 CREATE TABLE product_has_order (
     product_id INT REFERENCES product(id),
     order_id INT REFERENCES "order"(id),
-<<<<<<< HEAD
     quantity_bought TEXT NOT NULL
-=======
-    quantity_to_buy TEXT NOT NULL
->>>>>>> order
 );
 
 COMMIT;

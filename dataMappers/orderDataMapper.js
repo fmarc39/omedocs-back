@@ -19,26 +19,12 @@ module.exports = {
         return result.rows;
     },
 
-    // Insère et sélectionne (avec "RETURNING") les données de la nouvelle commande
-    async insertOrder(orderNumber, price, pharmacy_name, hospital_id) {
+    async insertOrder(orderNumber, totalCost, buyerId, sellerId) {
         const result = await client.query(`
-            INSERT INTO "order" (order_number, total_cost, seller_name, buyer_id)
+            INSERT INTO "order" (order_number, total_cost, buyer_id, seller_id)
                 VALUES ($1, $2, $3, $4)
-            RETURNING *`,   
-            [orderNumber, price, pharmacy_name, hospital_id]   
-        );
-
-        // Renvoit ces données
-        return result.rows[0];
-    },
-
-    // Insère et sélectionne (avec "RETURNING") les données reliant une commande à un produit et sa quantité achetée
-    async insert_order_product_relation(product_id, order_id, quantityToBuy) {
-        const result = await client.query(`
-            INSERT INTO product_has_order (product_id, order_id, quantity_bought)
-                VALUES ($1, $2, $3)
             RETURNING *`,
-            [product_id, order_id, quantityToBuy]       
+            [orderNumber, totalCost, buyerId, sellerId]
         );
 
         // Renvoit ces données

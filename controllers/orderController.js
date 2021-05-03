@@ -1,5 +1,5 @@
 // On importe les fonctions du fichier orderDataMapper
-const { selectOrderNumbers, insertOrder, insert_order_product_relation, selectOrders } = require('../dataMappers/orderDataMapper');
+const { selectOrderNumbers, insertOrder, selectOrders } = require('../dataMappers/orderDataMapper');
 // On récupère la librarie 'randomstring' qui crée une chaîne de caractères aléatoire
 const randomstring = require('randomstring');
 
@@ -9,7 +9,7 @@ module.exports =  {
     async createOrder (request, response, next) {
         // 
         const buyerId = parseInt(request.params.userId, 10);
-        const { price, pharmacyname, productid, quantityToBuy } = request.body;
+        const { price, pharmacyid } = request.body;
         
         const generateString = randomstring.generate(17);
 
@@ -19,7 +19,6 @@ module.exports =  {
             if (orderNumbers) {
                 for (let orderNumber of orderNumbers) {
                     const value = orderNumber.order_number;
-                    console.log(value);
 
                     if (value == generateString) {
                         generateString = randomstring.generate(17);
@@ -27,13 +26,11 @@ module.exports =  {
                 }
             };
 
-            const newOrder = await insertOrder(generateString, price, pharmacyname, buyerId);
-            const order_product_relation = await insert_order_product_relation(productid, newOrder.id, quantityToBuy);
+            const newOrder = await insertOrder(generateString, price, buyerId, pharmacyid);
 
             response.status(200).json({ 
                 status: "success",
                 newOrder, 
-                order_product_relation
             }); 
         } catch(error) {
             next(error);

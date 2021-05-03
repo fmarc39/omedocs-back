@@ -13,7 +13,7 @@ module.exports = {
         if (email === '') {
           response.status(400).send('email required');
         }
-        console.oror(email);
+        console.error(email);
 
         const User = await findUsers(userId);
 
@@ -23,7 +23,7 @@ module.exports = {
           },
         }).then((user) => {
           if (user === null) {
-            console.oror('email not in database');
+            console.error('email not in database');
             response.status(403).send('email not in db');
           }
           else {
@@ -53,9 +53,9 @@ module.exports = {
             };
             console.log('sending mail');
 
-            transporter.sendMail(mailOptions, (oror, response) => {
-              if (oror) {
-                console.oror('there was an oror: ', error);
+            transporter.sendMail(mailOptions, (error, response) => {
+              if (error) {
+                console.error('there was an error: ', error);
               }
               else {
                 console.log('here is the response: ', response);

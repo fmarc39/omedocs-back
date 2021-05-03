@@ -9,7 +9,7 @@ module.exports =  {
     async createOrder (request, response, next) {
         // 
         const buyerId = parseInt(request.params.userId, 10);
-        const { price, pharmacyid } = request.body;
+        const { total_cost, pharmacyid } = request.body;
         
         const generateString = randomstring.generate(17);
 
@@ -26,7 +26,7 @@ module.exports =  {
                 }
             };
 
-            const newOrder = await insertOrder(generateString, price, buyerId, pharmacyid);
+            const newOrder = await insertOrder(generateString, total_cost, buyerId, pharmacyid);
 
             response.status(200).json({ 
                 status: "success",

@@ -9,7 +9,7 @@ module.exports = {
         const productsValue = request.query.value;
 
         try {
-            // Récupère le/les médicament(s)
+            // Envoi de la donnée à la fonction 'findProductsByName' du dataMapper et récupère le/les médicament(s)
             const products = await findProductsByName(productsValue);
             
             // Envoi du/des médicament(s) sous format JSON avec un statut de succès
@@ -30,7 +30,7 @@ module.exports = {
         const productsValue = request.query.value;
 
         try {
-            // Récupère le/les médicament(s)
+            // Envoi de la donnée à la fonction 'findProductsByCis' du dataMapper et récupère le/les médicament(s)
             const products = await findProductsByCis(productsValue);
 
             // Envoi du/des médicament(s) sous format JSON avec un statut de succès

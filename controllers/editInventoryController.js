@@ -9,7 +9,7 @@ module.exports = {
         const productId = parseInt(request.params.productId, 10);
 
         try {
-            // Récupère les infos du médicament supprimé
+            // Envoi l'id du médicament à la fonction 'deleteProduct' du dataMapper et récupère les infos du médicament supprimé
             const product = await deleteProduct(productId);
 
             // Si on ne récupère pas de médicament, on renvoit une erreur indiquant que le serveur n'a pas trouvé 
@@ -36,7 +36,8 @@ module.exports = {
         const productId = parseInt(request.params.productId, 10);
 
         try {
-            // Récupère les infos du médicament avec la nouvelle quantité
+            // Envoi l'id du médicament à la fonction 'updateProduct' du dataMapper et récupère les infos du médicament avec 
+            // la nouvelle quantité
             const product = await updateProduct(request.body.quantity, productId);
             
             // Si on ne récupère pas de médicament, on renvoit une erreur indiquant que le serveur n'a pas trouvé 

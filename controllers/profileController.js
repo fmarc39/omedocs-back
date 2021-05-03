@@ -9,7 +9,7 @@ module.exports = {
         const userId = parseInt(request.params.userId, 10);
 
         try {
-            // Récupère les infos du profil modifié de l'utilisateur
+            // Envoi l'id de l'utilisateur à la fonction 'updateEmail' du dataMapper et récupère les infos de son profil modifié
             const profile = await updateEmail(request.body.newEmail, userId);
 
             // Si on ne récupère pas d'utilisateur, on renvoit une erreur indiquant que le serveur n'a pas trouvé 
@@ -36,7 +36,7 @@ module.exports = {
         const userId = parseInt(request.params.userId, 10);
 
         try {
-            // Récupère les infos du profil modifié de l'utilisateur
+            // Envoi l'id de l'utilisateur à la fonction 'updatePhoneNumber' du dataMapper et récupère les infos de son profil modifié
             const profile = await updatePhoneNumber(request.body.newPhoneNumber, userId);
 
             // Si on ne récupère pas d'utilisateur, on renvoit une erreur indiquant que le serveur n'a pas trouvé 

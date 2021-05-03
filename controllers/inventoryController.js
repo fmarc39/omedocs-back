@@ -5,16 +5,12 @@ const { insertProduct, findUserInventory } = require('../dataMappers/inventoryDa
 module.exports = {
     // Récupère et renvoit sous format JSON les informations du médicament ajouté à l'inventaire du vendeur
     async createProduct (request, response, next) {
+        // Récupère les données à insérer en base de données
+        const { name, expiration, quantity, price, cis, user_id } = request.body;
+
         try {            
-            // Récupère les infos du médicament
-            const newProduct = await insertProduct(
-                request.body.name,
-                request.body.expiration,
-                request.body.quantity,
-                request.body.price,
-                request.body.cis,
-                request.body.user_id
-            );
+            // Envoi les données à la fonction 'insertProduct' du dataMapper et récupère son résultat
+            const newProduct = await insertProduct(name, expiration, quantity, price, cis, user_id);
 
             // Si on ne récupère pas de nouveau médicament, on renvoit une erreur indiquant que le serveur n'a pas trouvé 
             // la requête demandée (404)            
@@ -37,7 +33,7 @@ module.exports = {
         const userId = parseInt(request.params.userId, 10);
 
         try {
-            // Récupère les médicaments dans l'inventaire du vendeur
+            // Envoi l'id du vendeur à la fonction 'findUserInventory' du dataMapper et récupère les médicaments de son inventaire
             const userInventory = await findUserInventory(userId);
             
             // Envoi de l'inventaire du vendeur sous format JSON avec un statut de succès

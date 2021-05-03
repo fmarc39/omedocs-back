@@ -10,23 +10,12 @@ module.exports = {
         return result.rows;
     },
 
-    async insertOrder(orderNumber, totalCost, pharmacyName, buyerId) {
+    async insertOrder(orderNumber, totalCost, buyerId, sellerId) {
         const result = await client.query(`
-            INSERT INTO "order" (order_number, total_cost, pharmacy_name, buyer_id)
+            INSERT INTO "order" (order_number, total_cost, buyer_id, seller_id)
                 VALUES ($1, $2, $3, $4)
             RETURNING *`,
-            [orderNumber, totalCost, pharmacyName, buyerId]
-        );
-
-        return result.rows[0];
-    },
-
-    async insert_order_product_relation(productId, orderId, quantityToBuy) {
-        const result = await client.query(`
-            INSERT INTO product_has_order
-                VALUES ($1, $2, $3)
-            RETURNING *`,
-            [productId, orderId, quantityToBuy]
+            [orderNumber, totalCost, buyerId, sellerId]
         );
 
         return result.rows[0];

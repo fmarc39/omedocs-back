@@ -27,10 +27,11 @@ module.exports =  {
             };
 
             const newOrder = await insertOrder(generateString, total_cost, buyerId, pharmacyid);
+            newOrder["date"] = newOrder.date.toISOString().split('T')[0];
 
             response.status(200).json({ 
                 status: "success",
-                newOrder, 
+                newOrder
             }); 
         } catch(error) {
             next(error);
@@ -42,6 +43,10 @@ module.exports =  {
 
         try {
             const orders = await selectOrders(userId);
+
+            for (let order of orders) {
+                order["date"] = order.date.toISOString().split('T')[0];
+            };
 
             if (!orders) {
                 next()

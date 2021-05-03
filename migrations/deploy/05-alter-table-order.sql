@@ -16,4 +16,8 @@ CREATE TABLE "order" (
     seller_id INT REFERENCES "user"(id)
 );
 
+ALTER TABLE "order"
+    ALTER date   
+        SET DEFAULT NOW();
+
 COMMIT;

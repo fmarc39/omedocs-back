@@ -1,3 +1,5 @@
+/* ! Pas encore utilisé */
+
 // On récupère le package 'jsonwebtoken' qui permet d'implémenter les JSON Web Tokens pour envoyer des infos qui peuvent
 // être vérifiées grâce à une signature digitale faite côté serveur
 const jsonwebtoken = require('jsonwebtoken');

@@ -1,3 +1,5 @@
+/* ! Pas encore utilisé */
+
 // Récupère le pool de clients PostgreSQL
 const client = require('./client'); 
 

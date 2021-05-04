@@ -29,11 +29,13 @@ module.exports = {
     }, 
 
     async editOrderStatus (request, response, next) {
-        const orderId = parseInt(request.params.orderId, 10);
+        const orderNumber = request.params.orderNumber;
+        console.log(orderNumber);
         const { newStatus } = request.body; 
 
         try {
-            const order = await updateOrderStatus(newStatus, orderId);
+            const order = await updateOrderStatus(newStatus, orderNumber);
+            console.log(order);
             order["date"] = order.date.toISOString().split('T')[0];
 
             if (!order) {

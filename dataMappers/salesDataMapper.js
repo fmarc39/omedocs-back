@@ -17,13 +17,16 @@ module.exports = {
     },
 
     // Insère et sélectionne (avec "RETURNING") les données du médicament ajouté par un vendeur dans la base de données 
-    async updateOrderStatus(status, id) {
+    async updateOrderStatus(status, orderNumber) {
+        console.log(status)
+        console.log('number: ', orderNumber);
+
         const result = await client.query(`
             UPDATE "order"
                 SET status=$1
-                    WHERE id=$2
+                    WHERE order_number=$2
             RETURNING *`,
-            [status, id]
+            [status, orderNumber]
         );
 
         return result.rows[0];

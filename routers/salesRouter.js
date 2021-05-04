@@ -15,7 +15,7 @@ const router = express.Router();
 // Route pour modifier l'email de l'utilisateur
 router.get('/sales/:user_id', authMiddleware, salesController.getSales);
 // Route pour modifier le numéro de téléphone de l'utilisateur
-router.patch('/status/:orderId', authMiddleware, salesController.editOrderStatus);
+router.patch('/status/:orderNumber', authMiddleware, salesController.editOrderStatus);
 
 // Export la constante 'router'
 module.exports = router; 

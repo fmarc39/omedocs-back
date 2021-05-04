@@ -12,10 +12,12 @@ module.exports =  {
         // Récupère le montant total de la commande et l'id de la pharmacie qui a vendu les produits de cette commande
         const { total_cost, pharmacyid } = request.body;
         
-        // Génère une chaîne numérique aléatoire
+        // Notre but est de générer une chaîne numérique aléatoire et unique
+        // On commence par générer une chaîne numérique de 8 chiffres aléatoires
         const generateString = randomstring.generate({ length: 8, charset: 'numeric' });
 
         try {
+            // 
             const orderNumbers = await selectOrderNumbers();
 
             if (orderNumbers) {

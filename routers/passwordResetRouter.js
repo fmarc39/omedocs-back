@@ -7,7 +7,7 @@ const passwordResetController = require('../controllers/passwordResetController'
 // Permet de créer des nouveaux gestionnaires de routes pour manipuler les requêtes
 const router = express.Router();
 
-router.post('/forgotPassword/:userId', passwordResetController.createNewPassword);
+router.post('/forgotPassword', passwordResetController.createNewPassword);
 
 // Export la constante 'router'
 module.exports = router; 

@@ -11,7 +11,7 @@ module.exports =  {
         const buyerId = parseInt(request.params.userId, 10);
         const { total_cost, pharmacyid } = request.body;
         
-        const generateString = randomstring.generate(17);
+        const generateString = randomstring.generate({ length: 8, charset: 'numeric' });
 
         try {
             const orderNumbers = await selectOrderNumbers();

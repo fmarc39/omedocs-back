@@ -3,7 +3,7 @@ const client = require('./client');
 
 // On export les fonctions
 module.exports = {
-    // Sélectionne depuis la bdd les données de
+    // Sélectionne depuis la bdd les données de 
     async findSales(user_id) {
         const result = await client.query(`
             SELECT *

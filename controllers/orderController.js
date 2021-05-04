@@ -7,10 +7,12 @@ const randomstring = require('randomstring');
 module.exports =  {
     // Récupère et renvoit sous format JSON les informations de la commande
     async createOrder (request, response, next) {
-        // 
+        // Récupère l'id de l'acheteur
         const buyerId = parseInt(request.params.userId, 10);
+        // Récupère le montant total de la commande et l'id de la pharmacie qui a vendu les produits de cette commande
         const { total_cost, pharmacyid } = request.body;
         
+        // Génère une chaîne numérique aléatoire
         const generateString = randomstring.generate({ length: 8, charset: 'numeric' });
 
         try {
@@ -43,6 +45,7 @@ module.exports =  {
 
         try {
             const orders = await selectOrders(userId);
+            console.log(orders);
 
             for (let order of orders) {
                 order["date"] = order.date.toISOString().split('T')[0];

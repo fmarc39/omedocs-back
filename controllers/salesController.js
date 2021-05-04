@@ -10,6 +10,10 @@ module.exports = {
         try {
             const sales = await findSales(userId);
 
+            for (let sale of sales) {
+                sale["date"] = sale.date.toISOString().split('T')[0];
+            };
+
             if (!sales) {
                 next();
             } else {
@@ -30,6 +34,7 @@ module.exports = {
 
         try {
             const order = await updateOrderStatus(newStatus, orderId);
+            order["date"] = order.date.toISOString().split('T')[0];
 
             if (!order) {
                 next();

@@ -12,7 +12,7 @@ module.exports = {
             // Envoi des données à la fonction 'findEstablishments' du dataMapper et récupère l'/les organisme(s)
             const establishments = await findEstablishments(value, region);
             
-            // Envoi de l'/des organisme(s) sous format JSON avec un statut de succès
+            // Envoi au front de l'/des organisme(s) sous format JSON avec un statut de succès
             response.status(200).json({ 
                 status: "success",
                 establishments

@@ -3,7 +3,7 @@ const client = require('./client');
 
 // On export les fonctions
 module.exports = {
-    // Sélectionne depuis la bdd les données de 
+    // Sélectionne depuis la bdd les données de la commande contenant des produits vendus par l'utilisateur
     async findSales(user_id) {
         const result = await client.query(`
             SELECT *
@@ -16,11 +16,8 @@ module.exports = {
         return result.rows;
     },
 
-    // Insère et sélectionne (avec "RETURNING") les données du médicament ajouté par un vendeur dans la base de données 
+    // Met à jour le statut de livraison de la commande et sélectionne (avec "RETURNING *") ses infos  
     async updateOrderStatus(status, orderNumber) {
-        console.log(status)
-        console.log('number: ', orderNumber);
-
         const result = await client.query(`
             UPDATE "order"
                 SET status=$1
@@ -29,6 +26,7 @@ module.exports = {
             [status, orderNumber]
         );
 
+        // Renvoit ces données 
         return result.rows[0];
     }
 }

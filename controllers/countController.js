@@ -10,7 +10,7 @@ module.exports = {
             // Récupère le nombre de médicaments vendus sur le site
             const products = await countProducts();
             
-            // Envoi des infos du nombre d'acheteurs, de vendeurs et de médicaments sous format JSON avec un statut de succès
+            // Envoi au front du nombre d'acheteurs, de vendeurs et de médicaments sous format JSON avec un statut de succès
             response.status(201).json({ users, products });
         // S'il y a une erreur au niveau du serveur, on renvoit le statut d'erreur 500
         } catch (error) {

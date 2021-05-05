@@ -1,11 +1,11 @@
-/* ! Pas encore utilisé */
+/* ! PAS ENCORE UTILISÉ */
 
 // Récupère le pool de clients PostgreSQL
 const client = require('./client'); 
 
-// On export les fonctions
+// On export la fonction
 module.exports = {
-    // Sélectionne depuis la bdd les données des utilisateurs
+    // Sélectionne depuis la bdd les données de l'utilisateur avec l'adresse mail correspondant
     async findUser(email) {
         const result = await client.query(`
             SELECT *

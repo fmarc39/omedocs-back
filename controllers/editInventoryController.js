@@ -18,7 +18,7 @@ module.exports = {
                 next();
             
             } else {
-                // Envoi des infos du médicament sous format JSON avec un statut de succès
+                // Sinon, on envoit au front des infos du médicament sous format JSON avec un statut de succès
                 response.status(200).json({ 
                     status: "success",
                     product
@@ -46,7 +46,7 @@ module.exports = {
                 next();
                 
             } else {
-                // Envoi des infos du médicament sous format JSON avec un statut de succès
+                // Sinon, on envoit au front des infos du médicament sous format JSON avec un statut de succès
                 response.status(200).json({ 
                     status: "success",
                     product 

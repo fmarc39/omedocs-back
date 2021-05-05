@@ -39,7 +39,7 @@ module.exports = {
                 next();
                 
             } else {
-                // Envoit une réponse avec un statut de succès
+                // Sinon, on envoit au front une réponse avec un statut de succès
                 response.status(201).json({ newUser });
             }
         // S'il y a une erreur au niveau du serveur, on renvoit le statut d'erreur 500
@@ -75,7 +75,7 @@ module.exports = {
                 // Génère un token qui dure 30 minutes
                 const accessToken = jsonwebtoken.sign(userData, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '30m',  algorithm: 'HS256' });
 
-                // Renvoit notre token avec les infos de l'utilisateur au front
+                // Renvoi notre token avec les infos de l'utilisateur au front
                 response.status(200).json({ 
                     status: "success",
                     user, 

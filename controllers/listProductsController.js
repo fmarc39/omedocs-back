@@ -12,7 +12,7 @@ module.exports = {
             // Envoi de la donnée à la fonction 'findProductsByName' du dataMapper et récupère le/les médicament(s)
             const products = await findProductsByName(productsValue);
             
-            // Envoi du/des médicament(s) sous format JSON avec un statut de succès
+            // Envoi au front du/des médicament(s) sous format JSON avec un statut de succès
             response.status(200).json({ 
                 status: "success",
                 products
@@ -33,7 +33,7 @@ module.exports = {
             // Envoi de la donnée à la fonction 'findProductsByCis' du dataMapper et récupère le/les médicament(s)
             const products = await findProductsByCis(productsValue);
 
-            // Envoi du/des médicament(s) sous format JSON avec un statut de succès
+            // Envoi au front du/des médicament(s) sous format JSON avec un statut de succès
             response.status(200).json({ 
                 status: "success",
                 products

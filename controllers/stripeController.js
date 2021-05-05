@@ -19,6 +19,7 @@ module.exports = {
         // On initialise ces deux variables au cas où on les utilise pour afficher une erreur et/ou un statut (succès ou pas)
         let error;
         let status;
+        
         try {
             // Récupère les infos du médicament acheté et du token
             const { product, token } = request.body;

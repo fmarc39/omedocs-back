@@ -19,6 +19,7 @@ module.exports = {
         return result.rows;
     },
 
+    // Insère et sélectionne (avec "RETURNING *") les infos de la nouvelle commande
     async insertOrder(orderNumber, totalCost, buyerId, sellerId) {
         const result = await client.query(`
             INSERT INTO "order" (order_number, total_cost, buyer_id, seller_id)
@@ -31,7 +32,7 @@ module.exports = {
         return result.rows[0];
     },
 
-    // Sélectionne depuis la bdd les données des commandes de l'utilisateur
+    // Sélectionne depuis la bdd les données de toutes les commandes faites par l'utilisateur
     async selectOrders(buyer_id) {
         const result = await client.query(`
             SELECT * 

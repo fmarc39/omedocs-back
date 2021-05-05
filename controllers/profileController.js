@@ -18,7 +18,7 @@ module.exports = {
                 next();
 
             } else {
-                // Envoi des infos de l'utilisateur sous format JSON avec un statut de succès
+                // Sinon, on envoit au front des infos de l'utilisateur sous format JSON avec un statut de succès
                 response.status(200).json({
                     status: "success",
                     profile
@@ -45,7 +45,7 @@ module.exports = {
                 next();
 
             } else {
-                // Envoi des infos de l'utilisateur sous format JSON avec un statut de succès
+                // Sinon, on envoit au front des infos de l'utilisateur sous format JSON avec un statut de succès
                 response.status(200).json({
                     status: "success",
                     profile

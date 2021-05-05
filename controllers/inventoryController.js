@@ -18,7 +18,7 @@ module.exports = {
                 next();
 
             } else {
-                // Envoi des infos du médicament sous format JSON avec un statut de succès
+                // Sinon, on envoit au front des infos du médicament sous format JSON avec un statut de succès
                 response.status(201).json({ addedProduct: newProduct });
             }
         // S'il y a une erreur au niveau du serveur, on renvoit le statut d'erreur 500
@@ -36,7 +36,7 @@ module.exports = {
             // Envoi l'id du vendeur à la fonction 'findUserInventory' du dataMapper et récupère les médicaments de son inventaire
             const userInventory = await findUserInventory(userId);
             
-            // Envoi de l'inventaire du vendeur sous format JSON avec un statut de succès
+            // Envoi au front de l'inventaire du vendeur sous format JSON avec un statut de succès
             response.status(200).json({ 
                 status: "success",
                 userInventory 
